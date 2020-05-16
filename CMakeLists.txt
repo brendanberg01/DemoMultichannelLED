@@ -1,16 +1,28 @@
 cmake_minimum_required(VERSION 3.16)
 project(DemoMultichannelLED C)
 
+
+################################################################
+# upload options
+################################################################
 set(AVR_UPLOADTOOL avrdude)
 set(AVR_PROGRAMMER arduino)
 set(AVR_UPLOADTOOL_PORT /dev/cu.usbmodem1413401)
 
+
+################################################################
+# mcu options
+################################################################
 set(AVR_MCU atmega328p)
 set(AVR_H_FUSE 0xff)
 set(AVR_L_FUSE 0xde)
 set(AVR_L_FUSE 0x05)
 set(MCU_SPEED "16000000UL")
 
+
+################################################################
+# output chosen options
+################################################################
 message(STATUS "Current uploadtool is: ${AVR_UPLOADTOOL}")
 message(STATUS "Current programmer is: ${AVR_PROGRAMMER}")
 message(STATUS "Current upload port is: ${AVR_UPLOADTOOL_PORT}")
@@ -21,9 +33,17 @@ message(STATUS "Current low fuse is set to: ${AVR_L_FUSE}")
 message(STATUS "Current extended fuse is set to: ${AVR_E_FUSE}")
 message(STATUS "Current clock frequency is set to: ${MCU_SPEED}")
 
+
+################################################################
+# include locations
+################################################################
 set(CMAKE_SYSTEM_INCLUDE_PATH "${CMAKE_FIND_ROOT_PATH}/include")
 set(CMAKE_SYSTEM_LIBRARY_PATH "${CMAKE_FIND_ROOT_PATH}/lib")
 
+
+################################################################
+# build system
+################################################################
 if(CMAKE_BUILD_TYPE MATCHES Release)
     set(CMAKE_C_FLAGS_RELEASE "-Os")
     set(CMAKE_CXX_FLAGS_RELEASE "-Os")
@@ -42,4 +62,8 @@ add_definitions("-ffunction-sections")
 add_definitions("-c")
 add_definitions("-std=gnu99")
 
+
+################################################################
+# project files
+################################################################
 add_avr_executable(DemoMultichannelLED main.c)
