@@ -88,5 +88,11 @@ add_definitions("-std=gnu99")
 # project files
 ###############################################################################
 project(DemoMultichannelLED C)
+
 add_avr_executable(DemoMultichannelLED main.c)
+
+include_directories(multichannel_led)
+add_subdirectory(multichannel_led)
+avr_target_link_libraries(DemoMultichannelLED multichannel_led)
+
 avr_generate_fixed_targets()

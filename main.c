@@ -9,13 +9,15 @@
 #include <util/delay.h>
 #include <stdbool.h>
 
+#include "multichannel_led/library.h"
+
 int main()
 {
     DDRB |= (1 << DDB5);
 
     while (true)
     {
-        PORTB ^= (1 << PORTB5);
+        hello();
         _delay_ms(500);
     }
 
