@@ -1,3 +1,4 @@
 [submodule "multichannel_led"]
 	path = multichannel_led
 	url = https://www.github.com/brendanberg01/multichannel_led.git
+	branch = env_setup
