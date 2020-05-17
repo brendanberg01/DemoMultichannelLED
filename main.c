@@ -9,7 +9,7 @@
 #include <util/delay.h>
 #include <stdbool.h>
 
-#include "multichannel_led/library.h"
+#include "multichannel_led/multichannel_led.h"
 
 int main()
 {
