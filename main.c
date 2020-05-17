@@ -13,11 +13,21 @@
 
 int main()
 {
-    DDRB |= (1 << DDB5);
+    mled_Color colors[6] = {{220u, 20u, 20u},
+                            {220u, 20u, 20u},
+                            {20u, 220u, 20u},
+                            {20u, 220u, 20u},
+                            {20u, 20u, 220u},
+                            {20u, 20u, 220u}};
+
+    mled_Channel channels[2] = {{&PORTB, &DDRB, 1u, 2u, 3u, -1},
+                                {&PORTB, &DDRB, 0u, 3u, 3u, +1}};
+
+    mled_init(channels, 2u);
 
     while (true)
     {
-        hello();
+        mled_transmission_start(channels, 2u, colors);
         _delay_ms(500);
     }
 
